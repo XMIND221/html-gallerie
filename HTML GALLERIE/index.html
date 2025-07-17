@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Galerie Produits - Mode Clair/Sombre</title>
+    <style>
+        :root {
+            --bg-light: #f9f9f9;
+            --bg-dark: #121212;
+            --card-bg-light: #fff;
+            --card-bg-dark: #1e1e1e;
+            --text-light: #222;
+            --text-dark: #eee;
+            --accent: #4a90e2;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-dark: rgba(0, 0, 0, 0.7);
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.dark {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .toggle-theme {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            background-color: var(--accent);
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-theme:hover {
+            background-color: #357ABD;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: var(--card-bg-light);
+            box-shadow: 0 4px 8px var(--shadow-light);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark .card {
+            background-color: var(--card-bg-dark);
+            box-shadow: 0 4px 12px var(--shadow-dark);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px var(--accent);
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: inherit;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="toggle-theme">Changer de thème</button>
+
+    <div class="gallery">
+        <div class="card" style="animation-delay: 0.2s;">
+            <img src="https://picsum.photos/id/101/300/200" alt="Produit 1" />
+            <div class="card-content">
+                <h3 class="card-title">Produit 1</h3>
+                <p class="card-desc">Description courte du produit 1.</p>
+            </div>
+        </div>
+        <div class="card" style="animation-delay: 0.4s;">
+            <img src="https://picsum.photos/id/102/300/200" alt="Produit 2" />
+            <div class="card-content">
+                <h3 class="card-title">Produit 2</h3>
+                <p class="card-desc">Description courte du produit 2.</p>
+            </div>
+        </div>
+        <div class="card" style="animation-delay: 0.6s;">
+            <img src="https://picsum.photos/id/103/300/200" alt="Produit 3" />
+            <div class="card-content">
+                <h3 class="card-title">Produit 3</h3>
+                <p class="card-desc">Description courte du produit 3.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const toggleBtn = document.querySelector('.toggle-theme');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+        });
+    </script>
+
+</body>
+
+</html>
